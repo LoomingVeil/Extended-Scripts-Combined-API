@@ -9,10 +9,13 @@ import noppes.npcs.api.handler.IOverlayHandler;
 import noppes.npcs.api.handler.IPlayerData;
 import noppes.npcs.api.handler.data.*;
 import noppes.npcs.api.overlay.ICustomOverlay;
+import org.spongepowered.asm.mixin.Unique;
 import noppes.npcs.api.INbt;
 import noppes.npcs.api.IContainer;
 import net.minecraft.inventory.InventoryEnderChest;
 import net.minecraft.entity.player.InventoryPlayer;
+import com.veil.extendedscripts.properties.ExtendedScriptPlayerProperties;
+import com.veil.extendedscripts.ExtendedScripts;
 
 /**
  * Represents a player in the game with methods for managing dialogs, quests,
@@ -675,7 +678,7 @@ public interface IPlayer<T extends EntityPlayerMP> extends IEntityLivingBase<T>,
 
     /**
      * Returns the specified player's playerdata in NBT form. If you are looking for playerdata related to
-     * customNpcs+ then use {@link #getData()}
+     * customNpcs+ then use {@link noppes.npcs.api.entity.IPlayer#getData()}
      */
     INbt getPlayerData();
 
@@ -742,15 +745,42 @@ public interface IPlayer<T extends EntityPlayerMP> extends IEntityLivingBase<T>,
      */
     InventoryEnderChest getMCEnderChest();
 
+    /**
+     * Gets the attribute core as an item that can be given to the player.
+     */
+    IItemStack getAttributeCore();
+
+    public void resetCoreAttributes();
+
+    /**
+     * Gets core attributes. These attributes are separate from equipment attributes.
+     */
+    float getCoreAttribute(String key);
+
+    /**
+     * Gives attributes to the player. These attributes are the same that can be applied to item except these attributes are always active until removed.
+     */
+    void setAttribute(String key, float value);
+
+    /**
+     * @deprecated Use {@link #setAttribute(String, float)}
+     */
     void setVerticalFlightSpeed(float value);
 
+    /**
+     * @deprecated Use {@link #getCoreAttribute(String)}
+     */
     float getVerticalFlightSpeed();
 
     /**
-     * Sets the player's horizontal fly speed. Default is 1. See {@link #setVerticalFlightSpeed(float)} for vertical flight speed.
+     * @deprecated Use {@link #setAttribute(String, float)}
+     * Sets the player's horizontal fly speed multiplier. Default is 0. See {@link #setVerticalFlightSpeed(float)} for vertical flight speed.
      */
     void setFlightSpeed(float value);
 
+    /**
+     * @deprecated Use {@link #getCoreAttribute(String)}
+     */
     float getFlightSpeed();
 
     void forceFlyState(boolean value);

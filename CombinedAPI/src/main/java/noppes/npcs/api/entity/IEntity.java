@@ -6,6 +6,8 @@ import noppes.npcs.api.INbt;
 import noppes.npcs.api.IParticle;
 import noppes.npcs.api.IPos;
 import noppes.npcs.api.IWorld;
+import org.spongepowered.asm.mixin.Unique;
+import noppes.npcs.api.AbstractNpcAPI;
 
 /**
  * Represents a generic entity in the world.
@@ -599,46 +601,76 @@ public interface IEntity<T extends Entity> {
      */
     void updateEntity();
 
+    boolean hasStoredItem(String key);
+
+    String getStoredItemKeys();
+
+    void clearStoredItems();
+
+    Object getStoredItem(String key);
+
+    /**
+     * Stores a string in the entity's stored data that can be reconstructed back into an item. Keys for storedItem functions are shared with storedData functions.
+     */
+    void setStoredItem(String key, IItemStack item);
+
     float getJumpBoost();
 
     /**
-     * Modify how high you go when you jump. Default is 1.
-     * This function is not linearly scaled. Hopefully it will be in the future.
-     * @param value
+     * Modify how high the entity (not players) goes when it jumps. Default is 1.
+     * The effect is equivalent to having the jump boost effect of level (value - 1)
+     * For players, use {@link noppes.npcs.extendedapi.entity.IPlayer#setAttribute(String, float)}
      */
     void setJumpBoost(float value);
 
     float getMaxFallDistance();
 
     /**
-     * Sets the max fall distance before an entity takes fall damage. Default is 3.
+     * Sets the max fall distance before an entity (not players) takes fall damage. Default is 3.
+     * For players, use {@link noppes.npcs.extendedapi.entity.IPlayer#setAttribute(String, float)}
      */
     void setMaxFallDistance(float value);
 
     float getUnderwaterDownwardGravity();
 
+    /**
+     * For players, use {@link noppes.npcs.extendedapi.entity.IPlayer#setAttribute(String, float)}
+     */
     void setUnderwaterDownwardGravity(float value);
 
     float getUnderwaterUpwardGravity();
 
+    /**
+     * For players, use {@link noppes.npcs.extendedapi.entity.IPlayer#setAttribute(String, float)}
+     */
     void setUnderwaterUpwardGravity(float value);
 
     float getUnderwaterGravity();
 
+    /**
+     * For players, use {@link noppes.npcs.extendedapi.entity.IPlayer#setAttribute(String, float)}
+     */
     void setUnderwaterGravity(float value);
 
     float getDownwardGravity();
 
+    /**
+     * For players, use {@link noppes.npcs.extendedapi.entity.IPlayer#setAttribute(String, float)}
+     */
     void setDownwardGravity(float value);
 
     float getUpwardGravity();
 
+    /**
+     * For players, use {@link noppes.npcs.extendedapi.entity.IPlayer#setAttribute(String, float)}
+     */
     void setUpwardGravity(float value);
 
     float getGravity();
 
     /**
-     * Sets the gravity of the entity. Ex 0.1 for 10% gravity, 10 for 1000% gravity
+     * Sets the gravity of the entity (not players). Ex 0.1 for 10% gravity, 10 for 1000% gravity
+     * For players, use {@link noppes.npcs.extendedapi.entity.IPlayer#setAttribute(String, float)}
      */
     void setGravity(float value);
 

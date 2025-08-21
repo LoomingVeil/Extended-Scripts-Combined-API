@@ -351,6 +351,7 @@ public interface IItemStack {
 
     /**
      * Returns the underlying Minecraft NBTTagCompound for the item.
+     * The Nbt returned is the same format used to be added to blocks and items that store items.
      *
      * @return The NBTTagCompound.
      */
@@ -382,6 +383,8 @@ public interface IItemStack {
      */
     boolean compare(IItemStack item, boolean ignoreDamage, boolean ignoreNBT);
 
-    void setUnbreakable(IItemStack item, boolean value);
+    int getNumericalId();
+
+    void setUnbreakable(boolean value);
 
 }

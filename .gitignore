@@ -1,8 +1,10 @@
 # Default ignored files
 /shelf/
 /workspace.xml
-/Extended Scripts Main/
 .idea/
 .vscode/
 Extended Scripts Main/
 Latest/
+CustomNPC-DBC-Addon Source/
+CustomNPC-Plus Source/
+curseforge_icon.png
