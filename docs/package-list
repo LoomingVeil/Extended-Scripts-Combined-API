@@ -1,5 +1,7 @@
 com.veil.extendedscripts.extendedapi
 com.veil.extendedscripts.extendedapi.constants
+com.veil.extendedscripts.extendedapi.entity
+com.veil.extendedscripts.extendedapi.event
 net.minecraft.block.properties
 net.minecraft.block.state
 net.minecraft.util

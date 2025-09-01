@@ -5,29 +5,12 @@ import kamkeel.npcs.controllers.AttributeController;
 import net.minecraft.entity.player.EntityPlayer;
 import noppes.npcs.api.IWorld;
 import noppes.npcs.api.entity.IEntity;
+import noppes.npcs.api.handler.data.IAttributeDefinition;
 
 /**
  * This object stores functions available to all scripting handlers through the "extAPI" keyword.
  */
 public interface AbstractExtendedAPI {
-    IShapeMaker getShapeMaker();
-
-    IKeys getKeyCodes();
-
-    IAnimationType getAnimationTypes();
-
-    IEntityType getEntityTypes();
-
-    IJobType getJobTypes();
-
-    IRoleType getRoleTypes();
-
-    IAttributeValueType getAttributeValueTypes();
-
-    IAttributeSection getAttributeSections();
-
-    IColorCodes getColorCodes();
-
     /**
      * Gets an array of the names of the registered entities in the game.
      * These names can be used in functions like {@link #createIEntity(String, IWorld)}.
@@ -85,4 +68,6 @@ public interface AbstractExtendedAPI {
      * Gets a list of only the custom attributes' keys that do not come natively with CustomNpcs+.
      */
     String[] getCustomAttributeKeyList();
+
+    IAttributeDefinition getAttributeDefinition(String key);
 }

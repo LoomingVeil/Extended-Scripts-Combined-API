@@ -14,6 +14,7 @@ import noppes.npcs.api.INbt;
 import noppes.npcs.api.IContainer;
 import net.minecraft.inventory.InventoryEnderChest;
 import net.minecraft.entity.player.InventoryPlayer;
+import com.veil.extendedscripts.properties.PlayerAttribute;
 import com.veil.extendedscripts.properties.ExtendedScriptPlayerProperties;
 import com.veil.extendedscripts.ExtendedScripts;
 
@@ -697,7 +698,7 @@ public interface IPlayer<T extends EntityPlayerMP> extends IEntityLivingBase<T>,
      * Opens a player's ender chest for a specified player
      * @param enderChestOwner The IPlayer whose ender chest is viewed
      */
-    void openEnderChest(IPlayer enderChestOwner);
+    void openEnderChest(noppes enderChestOwner);
 
     /**
      * Opens the player's ender chest for themselves.
@@ -745,6 +746,8 @@ public interface IPlayer<T extends EntityPlayerMP> extends IEntityLivingBase<T>,
      */
     InventoryEnderChest getMCEnderChest();
 
+    String getCoreAttributeKeys();
+
     /**
      * Gets the attribute core as an item that can be given to the player.
      */
@@ -761,6 +764,14 @@ public interface IPlayer<T extends EntityPlayerMP> extends IEntityLivingBase<T>,
      * Gives attributes to the player. These attributes are the same that can be applied to item except these attributes are always active until removed.
      */
     void setAttribute(String key, float value);
+
+    public boolean getKeepInventory();
+
+    /**
+     * Enables keep inventory per player. However, your items may be lost if you close the game between dying and respawning.
+     * Use at your own risk.
+     */
+    public void setKeepInventory(boolean keepInventory);
 
     /**
      * @deprecated Use {@link #setAttribute(String, float)}
