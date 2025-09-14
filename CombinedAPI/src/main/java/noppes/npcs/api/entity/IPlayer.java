@@ -10,6 +10,7 @@ import noppes.npcs.api.handler.IPlayerData;
 import noppes.npcs.api.handler.data.*;
 import noppes.npcs.api.overlay.ICustomOverlay;
 import org.spongepowered.asm.mixin.Unique;
+import noppes.npcs.api.IScreenSize;
 import noppes.npcs.api.INbt;
 import noppes.npcs.api.IContainer;
 import net.minecraft.inventory.InventoryEnderChest;
@@ -672,6 +673,13 @@ public interface IPlayer<T extends EntityPlayerMP> extends IEntityLivingBase<T>,
      * @return Player Attributes Data
      */
     IPlayerAttributes getAttributes();
+
+    /**
+     * Due to CustomNPC+'s code, sometimes {@link IScreenSize#getHeight()} and {@link IScreenSize#getWidth()} will
+     * return -1 until the screen size is changed. Extended Scripts tries to fix this issue, but if it is ever not
+     * enough, this method can force an update.
+     */
+    void resyncScreenSize();
 
     boolean isOperator();
 

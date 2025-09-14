@@ -383,6 +383,10 @@ public interface IItemStack {
      */
     boolean compare(IItemStack item, boolean ignoreDamage, boolean ignoreNBT);
 
+    String getBlockTexture(int side);
+
+    String getItemTexture();
+
     int getNumericalId();
 
     void setUnbreakable(boolean value);

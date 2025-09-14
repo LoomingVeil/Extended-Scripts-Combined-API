@@ -1,4 +1,6 @@
 package noppes.npcs.api.item;
+import org.spongepowered.asm.mixin.Unique;
+import net.minecraft.util.ResourceLocation;
 
 public interface IItemCustomizable extends IItemStack {
 
@@ -205,6 +207,29 @@ public interface IItemCustomizable extends IItemStack {
      * @return The Z-axis translation
      */
     Float getTranslateZ();
+
+    /**
+     * You can ignore this function. There are likely no cases where it would be useful.
+     */
+    ResourceLocation getArmorResource(int slot);
+
+    /**
+     * Texture for leggings
+     */
+    void setArmorTexture2(String armorTexture2);
+
+    String getArmorTexture2();
+
+    /**
+     * Texture for helmet, chestplate, and boots
+     */
+    void setArmorTexture1(String armorTexture1);
+
+    String getArmorTexture1();
+
+    void setArmorColor(Integer armorColor);
+
+    int getArmorColor();
 
     int getHarvestLevel(String toolClass);
 

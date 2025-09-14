@@ -8,6 +8,9 @@ import noppes.npcs.api.scoreboard.IScoreboard;
 import net.minecraft.world.WorldServer;
 import noppes.npcs.api.IPos;
 import noppes.npcs.api.IBlock;
+import com.veil.extendedscripts.extendedapi.entity.ICustomProjectile;
+import com.veil.extendedscripts.extendedapi.IBlockData;
+import com.veil.extendedscripts.BlockData;
 
 public interface IWorld {
     /**
@@ -416,12 +419,25 @@ public interface IWorld {
 
     void broadcast(String message);
 
+    void fireProjectile(ICustomProjectile projectile, float velocity);
+
+    void fireProjectile(ICustomProjectile projectile);
+
     /**
      * Spawns an item on the ground in the world
      */
     IEntity spawnItem(IItemStack item, IPos pos);
 
+    /**
+     * Get the block as a IBlockData object. Returns null if the target block is air.
+     */
+    IBlockData getBlockData(IPos pos);
+
+    void setBlock(IPos pos, IBlockData state);
+
     void removeAllBlocks(IPos[] positions);
+
+    void setAllBlocks(IPos[] positions, BlockData state);
 
     boolean setAllBlocks(IPos[] positions, IItemStack item);
 
