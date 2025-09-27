@@ -619,7 +619,7 @@ public interface IEntity<T extends Entity> {
     /**
      * Modify how high the entity (not players) goes when it jumps. Default is 1.
      * The effect is equivalent to having the jump boost effect of level (value - 1)
-     * For players, use {@link noppes.npcs.extendedapi.entity.IPlayer#setAttribute(String, float)}
+     * For players, use {@link noppes.npcs.api.entity.IPlayer#setAttribute(String, float)}
      */
     void setJumpBoost(float value);
 
@@ -627,42 +627,42 @@ public interface IEntity<T extends Entity> {
 
     /**
      * Sets the max fall distance before an entity (not players) takes fall damage. Default is 3.
-     * For players, use {@link noppes.npcs.extendedapi.entity.IPlayer#setAttribute(String, float)}
+     * For players, use {@link noppes.npcs.api.entity.IPlayer#setAttribute(String, float)}
      */
     void setMaxFallDistance(float value);
 
     float getUnderwaterDownwardGravity();
 
     /**
-     * For players, use {@link noppes.npcs.extendedapi.entity.IPlayer#setAttribute(String, float)}
+     * For players, use {@link noppes.npcs.api.entity.IPlayer#setAttribute(String, float)}
      */
     void setUnderwaterDownwardGravity(float value);
 
     float getUnderwaterUpwardGravity();
 
     /**
-     * For players, use {@link noppes.npcs.extendedapi.entity.IPlayer#setAttribute(String, float)}
+     * For players, use {@link noppes.npcs.api.entity.IPlayer#setAttribute(String, float)}
      */
     void setUnderwaterUpwardGravity(float value);
 
     float getUnderwaterGravity();
 
     /**
-     * For players, use {@link noppes.npcs.extendedapi.entity.IPlayer#setAttribute(String, float)}
+     * For players, use {@link noppes.npcs.api.entity.IPlayer#setAttribute(String, float)}
      */
     void setUnderwaterGravity(float value);
 
     float getDownwardGravity();
 
     /**
-     * For players, use {@link noppes.npcs.extendedapi.entity.IPlayer#setAttribute(String, float)}
+     * For players, use {@link noppes.npcs.api.entity.IPlayer#setAttribute(String, float)}
      */
     void setDownwardGravity(float value);
 
     float getUpwardGravity();
 
     /**
-     * For players, use {@link noppes.npcs.extendedapi.entity.IPlayer#setAttribute(String, float)}
+     * For players, use {@link noppes.npcs.api.entity.IPlayer#setAttribute(String, float)}
      */
     void setUpwardGravity(float value);
 
@@ -670,7 +670,7 @@ public interface IEntity<T extends Entity> {
 
     /**
      * Sets the gravity of the entity (not players). Ex 0.1 for 10% gravity, 10 for 1000% gravity
-     * For players, use {@link noppes.npcs.extendedapi.entity.IPlayer#setAttribute(String, float)}
+     * For players, use {@link noppes.npcs.api.entity.IPlayer#setAttribute(String, float)}
      */
     void setGravity(float value);
 

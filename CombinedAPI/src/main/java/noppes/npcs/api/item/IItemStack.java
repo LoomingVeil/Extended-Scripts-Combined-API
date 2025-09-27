@@ -383,8 +383,17 @@ public interface IItemStack {
      */
     boolean compare(IItemStack item, boolean ignoreDamage, boolean ignoreNBT);
 
+    int getType();
+
+    /**
+     * Returns the textures that make up a block
+     */
     String getBlockTexture(int side);
 
+    /**
+     * Returns the texture of the item. This method is good for items and blocks with the same texture on all faces.
+     * However, if you want all the textures from a multi textured block, see
+     */
     String getItemTexture();
 
     int getNumericalId();

@@ -10,6 +10,7 @@ import noppes.npcs.api.handler.IPlayerData;
 import noppes.npcs.api.handler.data.*;
 import noppes.npcs.api.overlay.ICustomOverlay;
 import org.spongepowered.asm.mixin.Unique;
+import noppes.npcs.extendedapi.handler.data.IPlayerAttributes;
 import noppes.npcs.api.IScreenSize;
 import noppes.npcs.api.INbt;
 import noppes.npcs.api.IContainer;
@@ -17,6 +18,7 @@ import net.minecraft.inventory.InventoryEnderChest;
 import net.minecraft.entity.player.InventoryPlayer;
 import com.veil.extendedscripts.properties.PlayerAttribute;
 import com.veil.extendedscripts.properties.ExtendedScriptPlayerProperties;
+import com.veil.extendedscripts.extendedapi.IScreenResolution;
 import com.veil.extendedscripts.ExtendedScripts;
 
 /**
@@ -675,6 +677,18 @@ public interface IPlayer<T extends EntityPlayerMP> extends IEntityLivingBase<T>,
     IPlayerAttributes getAttributes();
 
     /**
+     * Use this if the screen resolution is -1 to force an update.
+     */
+    void resyncScreenResolution();
+
+    /**
+     * Unlike {@link noppes.npcs.api.entity.IPlayer#getScreenSize()} this object returns values based on the
+     * scaled resolution from your window size and GUI scale.
+     * These values are perfect for making scalable overlays with {@link noppes.npcs.api.overlay.ICustomOverlay}.
+     */
+    IScreenResolution getScreenResolution();
+
+    /**
      * Due to CustomNPC+'s code, sometimes {@link IScreenSize#getHeight()} and {@link IScreenSize#getWidth()} will
      * return -1 until the screen size is changed. Extended Scripts tries to fix this issue, but if it is ever not
      * enough, this method can force an update.
@@ -684,12 +698,6 @@ public interface IPlayer<T extends EntityPlayerMP> extends IEntityLivingBase<T>,
     boolean isOperator();
 
     int getSelectedHotbarSlot();
-
-    /**
-     * Returns the specified player's playerdata in NBT form. If you are looking for playerdata related to
-     * customNpcs+ then use {@link noppes.npcs.api.entity.IPlayer#getData()}
-     */
-    INbt getPlayerData();
 
     /**
      * Opens a furnace for the player
@@ -754,21 +762,30 @@ public interface IPlayer<T extends EntityPlayerMP> extends IEntityLivingBase<T>,
      */
     InventoryEnderChest getMCEnderChest();
 
+    /**
+     * @deprecated use {@link IPlayerAttributes#getCoreAttributeKeys()}}
+     */
     String getCoreAttributeKeys();
 
     /**
+     * @deprecated use {@link IPlayerAttributes#getAttributeCore()}
      * Gets the attribute core as an item that can be given to the player.
      */
     IItemStack getAttributeCore();
 
-    public void resetCoreAttributes();
+    /**
+     * @deprecated use {@link IPlayerAttributes#resetCoreAttributes()}
+     */
+    void resetCoreAttributes();
 
     /**
+     * @deprecated use {@link noppes.npcs.api.handler.data.IPlayerAttributes#getCoreAttribute(String)}
      * Gets core attributes. These attributes are separate from equipment attributes.
      */
     float getCoreAttribute(String key);
 
     /**
+     * @deprecated use {@link noppes.npcs.api.handler.data.IPlayerAttributes#setCoreAttribute(String, float)}
      * Gives attributes to the player. These attributes are the same that can be applied to item except these attributes are always active until removed.
      */
     void setAttribute(String key, float value);

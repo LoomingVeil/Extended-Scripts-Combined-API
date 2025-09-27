@@ -10,6 +10,7 @@ import noppes.npcs.api.ITimers;
 import noppes.npcs.api.handler.IActionManager;
 import noppes.npcs.api.handler.IOverlayHandler;
 import noppes.npcs.api.handler.data.*;
+import org.spongepowered.asm.mixin.Unique;
 
 /**
  * Represents a customizable NPC with a wide variety of properties such as appearance,
@@ -1508,6 +1509,9 @@ public interface ICustomNpc<T extends EntityCreature> extends IEntityLiving<T>, 
 
     void setPlayerSkinName(String playerName);
 
+    /**
+     * See {@link com.veil.extendedscripts.constants.AnimationType}
+     */
     int getAnimationType();
 
 }

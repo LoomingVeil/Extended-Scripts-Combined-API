@@ -37,4 +37,7 @@ public interface ICustomOverlay {
     ICustomOverlay fromNBT(NBTTagCompound tag);
 
     NBTTagCompound toNBT();
+
+    int nextComponentId();
+
 }

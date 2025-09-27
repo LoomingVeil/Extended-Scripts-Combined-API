@@ -115,7 +115,7 @@ def format_doc(node):
             
         # Close the Javadoc
         real_formatted_lines.append("     */")
-        return "\n".join(real_formatted_lines)
+        return ("\n".join(real_formatted_lines)).replace("npcs.extendedapi", "npcs.api") # This .replace fixes any of the @links that reference itself
     return ""
 
 

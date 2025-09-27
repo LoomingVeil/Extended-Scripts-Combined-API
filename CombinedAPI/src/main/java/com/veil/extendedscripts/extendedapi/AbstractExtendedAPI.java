@@ -2,10 +2,13 @@ package com.veil.extendedscripts.extendedapi;
 
 import com.veil.extendedscripts.PotionEffect;
 import com.veil.extendedscripts.extendedapi.constants.*;
+import com.veil.extendedscripts.extendedapi.entity.ICustomProjectile;
+import com.veil.extendedscripts.projectile.EntityCustomProjectile;
 import kamkeel.npcs.controllers.AttributeController;
 import net.minecraft.entity.player.EntityPlayer;
 import noppes.npcs.api.IWorld;
 import noppes.npcs.api.entity.IEntity;
+import noppes.npcs.api.entity.IEntityLivingBase;
 import noppes.npcs.api.handler.data.IAttributeDefinition;
 
 /**
@@ -26,6 +29,14 @@ public interface AbstractExtendedAPI {
     IEntity createIEntity(String entityName, IWorld world);
 
     /**
+     * Creates an instance of an ICustomProjectile that can be spawned in the world with {@link IWorld#spawnEntityInWorld(noppes.npcs.api.entity.IEntity)}
+     * Once spawned in, the entity will move as if it had been fired from the shooter.
+     */
+    ICustomProjectile createCustomProjectile(String texture, IEntityLivingBase shooter);
+
+    ICustomProjectile createCustomProjectile(IEntityLivingBase shooter);
+
+    /**
      * Converts a hex code to an integer color that can be used for ScriptedItem's setColor {@link noppes.npcs.api.item.IItemCustomizable#setColor(Integer)} method.
      * @param hex A length six hex code (#'s are removed automatically)
      * @return An integer color or -1 if wrong length and -2 if string is not a hex code.
@@ -35,13 +46,6 @@ public interface AbstractExtendedAPI {
     String npcColorToHex(int npcColor);
 
     String[] getAllServerPlayerNames();
-
-    /**
-     * Player attributes are typically changed anytime you change what item you are holding.
-     * They are also updated when core attributes are updated via command/script.
-     * Call this function if you need to manually update a player's attributes.
-     */
-    void updatePlayerAttributes(EntityPlayer player);
 
     /**
      * Registers a custom attribute that can both be applied via script or /kam attribute. Attributes are registered per world.
@@ -81,4 +85,10 @@ public interface AbstractExtendedAPI {
     IPotionEffect getIPotionEffect(int id, int duration, int amplifier) throws Exception;
 
     IPotionEffect getIPotionEffect(int id) throws Exception;
+
+    /**
+     * Gets the width of the string in pixels. This can be useful for centering {@link noppes.npcs.api.gui.ILabel}'s text.
+     * Having certain non-standard special characters may produce inaccurate results.
+     */
+    int getStringPixelWidth(String text);
 }

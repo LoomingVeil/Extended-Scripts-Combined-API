@@ -6,6 +6,7 @@ import noppes.npcs.api.handler.data.ISound;
 import noppes.npcs.api.item.IItemStack;
 import noppes.npcs.api.scoreboard.IScoreboard;
 import net.minecraft.world.WorldServer;
+import org.spongepowered.asm.mixin.Unique;
 import noppes.npcs.api.IPos;
 import noppes.npcs.api.IBlock;
 import com.veil.extendedscripts.extendedapi.entity.ICustomProjectile;
@@ -418,6 +419,14 @@ public interface IWorld {
     int getDimensionID();
 
     void broadcast(String message);
+
+    boolean isThundering();
+
+    /**
+     * Use in conjunction with {@link noppes.npcs.api.IWorld#setRaining(boolean)} to make it storm.
+     * @param thundering
+     */
+    void setThundering(boolean thundering);
 
     void fireProjectile(ICustomProjectile projectile, float velocity);
 

@@ -1,6 +1,8 @@
 package noppes.npcs.api.handler.data;
 
 import noppes.npcs.api.entity.IPlayer;
+import org.spongepowered.asm.mixin.Unique;
+import noppes.npcs.api.item.IItemStack;
 
 /**
  * Represents a collection of a player's custom attributes.
@@ -46,4 +48,36 @@ public interface IPlayerAttributes {
      * @return the corresponding {@link ICustomAttribute} instance, or null if not found
      */
     ICustomAttribute getAttribute(String key);
+
+    String getAttributeKeys();
+
+    String getCoreAttributeKeys();
+
+    boolean hasCoreAttribute(String key);
+
+    /**
+     * Gets the attribute core as an item that can be given to the player.
+     * @param canBeRedeemed When true and right-clicking the core for 3 seconds will give you all the attributes associated with the core.
+     */
+    IItemStack getAttributeCore(boolean canBeRedeemed);
+
+    /**
+     * Gets the attribute core as an item that can be given to the player.
+     */
+    IItemStack getAttributeCore();
+
+    void resetCoreAttributes();
+
+    /**
+     * Gets core attributes. These attributes are separate from equipment attributes.
+     */
+    float getCoreAttribute(String key);
+
+    void modifyCoreAttribute(String key, float delta);
+
+    /**
+     * Gives attributes to the player. These attributes are the same that can be applied to item except these attributes are always active until removed.
+     */
+    void setCoreAttribute(String key, float value);
+
 }
